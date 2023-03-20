@@ -18,10 +18,6 @@ const UserSchema = new Schema({
   phone: {
     type:Number,
    required:true
-  },
-  userId: {
-    type:String,
-    required:true
   }
 });
 

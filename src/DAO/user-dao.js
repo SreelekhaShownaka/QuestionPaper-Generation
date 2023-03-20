@@ -7,8 +7,7 @@ const UserDAO = {
             name:payload.name,
             email:payload.email,
             password:payload.password,
-            phone:payload.phone,
-            userId:payload.userId
+            phone:payload.phone
         }).save();
 
     },
