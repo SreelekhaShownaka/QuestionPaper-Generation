@@ -1,24 +1,12 @@
 const QuestionsDAO=require('../DAO/questions-dao');
 
 const QuestionsService={
-
-    register: (payload) => {
-    console.log('data inside service page',payload);
-
-    return new Promise((resolve,reject)=>{
-        QuestionsDAO.register(payload).then(result => {
-            resolve(result);
-        }).catch(error => {
-            reject(error);
-        })
-    })
-    },
-
-    create: (payload) => {
+    
+    createQuestions: (payload) => {
     console.log('data inside service',payload);
 
     return new Promise((resolve,reject) =>{
-        QuestionsDAO.login(payload).then(result => {
+        QuestionsDAO.createQuestions(payload).then(result => {
             console.log('result from data base in service page',result);
             resolve(result);
         }).catch(error => {
@@ -44,6 +32,18 @@ const QuestionsService={
         return new Promise((resolve, reject) => {
             console.log("checking inside service");
             QuestionsDAO.getAllQuestions().then(result => {
+                resolve(result);
+                console.log("result from data base in service page",result)
+            }).catch(error => {
+                reject(error);
+            })
+        })
+    },
+
+    getQuestionsByQuestionsId:(qnid)=>{
+        return new Promise((resolve, reject) => {
+            console.log("checking inside service");
+            QuestionsDAO.getQuestionsByQuestionsId(qnid).then(result => {
                 resolve(result);
                 console.log("result from data base in service page",result)
             }).catch(error => {

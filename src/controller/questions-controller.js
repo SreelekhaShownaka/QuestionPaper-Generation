@@ -4,14 +4,25 @@ const router=express.Router();
 
 router.post('/createQuestions',(req,res) => {
     let bodyData=req.body;
-    console.let('data inside controller',bodyData);
-    QuestionsService.register(bodyData).then(result=> {
+    console.log('data inside controller',bodyData);
+    QuestionsService.createQuestions(bodyData).then(result=> {
         res.send({data:'Questions successfully created'});
     }).catch(error=>{
         res.send({data:error});
     })
 })
 
+
+router.get('/getQuestionsByQuestionsId/:_id',(req,res)=>{
+    let qnid = req.params;
+    QuestionsService.getQuestionsByQuestionsId(qnid).then(result=>{
+        console.log(result)
+        res.send({allQuestions:result});
+    }).catch(error=>{
+        console.log(error);
+        res.send({error});
+    })
+})
 
 router.get('/getAllQuestions',(req,res)=>{
     QuestionsService.getAllQuestions().then(result=>{
@@ -26,7 +37,7 @@ router.get('/getAllQuestions',(req,res)=>{
 router.put('/updateQuestions/:_id',(req,res)=>{
     let bodyData = req.body;
     let paramsData = req.params;
-    console.log('data inside subject controller', bodyData);
+    console.log('data inside questions controller', bodyData);
     QuestionsService.updateQuestions(paramsData, bodyData).then(result=>{
         console.log('result from service page', result);
 
@@ -38,7 +49,7 @@ router.put('/updateQuestions/:_id',(req,res)=>{
 
 router.delete('/deleteQuestions/:_id',(req,res)=>{
     let paramsData = req.params;
-    console.log('data inside subject controller', paramsData);
+    console.log('data inside questions controller', paramsData);
     QuestionsService.deleteQuestions(paramsData).then(result=>{
         console.log('result from service page', result);
 

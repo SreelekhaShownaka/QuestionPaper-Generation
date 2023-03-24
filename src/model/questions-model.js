@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
 
-const questionsSchema = new Schema({
+const QuestionsSchema = new Schema({
 
 title: {
     type:String,
@@ -10,8 +10,9 @@ title: {
 },
 
 chapterId: {
-   type:String,
-   required:true    
+    type:Schema.Types.ObjectId,
+    ref:'Chapters',
+   required:true  
 },
 
 marks: {
@@ -20,7 +21,7 @@ marks: {
 }
 });
 
-
+module.exports=mongoose.model('questions',QuestionsSchema);
 
 // title:'',
 // chapterId:'',
