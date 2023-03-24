@@ -16,6 +16,8 @@ function login(){
         }),
         success: function(response){
             console.log(response.data);
+            if(response.data)
+            window.location.href = '/home';
         },
         error: function(xhr, status, error){
             console.log(xhr.responseText);

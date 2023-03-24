@@ -14,6 +14,13 @@ app.use('/questions',require('./src/controller/questions-controller'));
 app.use('/register',(req,res)=>{
     res.sendFile(__dirname+'/public/register.html');
 })
+
+app.use('/home',(req,res)=>{
+    res.sendFile(__dirname+'/public/home.html');
+})
+app.use('/ECSubject',(req,res)=>{
+    res.sendFile(__dirname+'/public/ECSubject.html');
+})
 app.use('/',(req,res)=>{
     res.sendFile(__dirname+'/public/index.html');
 })
